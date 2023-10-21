@@ -50,9 +50,9 @@
 
       async function onStartButtonClick() {
         try {
-          port = await navigator.serial.requestPort();
-          await port.open({ baudRate: 115200 });
           console.log("接続");
+          port = await navigator.serial.requestPort();
+          await port.open({ baudRate: 9600 });
         } catch (e) {
           console.log("Error");
         }
