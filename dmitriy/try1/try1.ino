@@ -23,24 +23,28 @@ void loop() {
     //Serial.println(ch);            // 受信した文字をシリアルモニタに出力
 
     if (ch == 'w') {               // 受信した文字が「w」の場合
+      Serial.println("w")
       digitalWrite(outputPin1,HIGH);
       digitalWrite(outputPin2,LOW);
       digitalWrite(outputPin3,HIGH);
       digitalWrite(outputPin4,LOW);
     }
     else if (ch == 'a') {          // 受信した文字が「a」の場合
+      Serial.println("a")
       digitalWrite(outputPin1,HIGH);
       digitalWrite(outputPin2,LOW);
       digitalWrite(outputPin3,LOW);
       digitalWrite(outputPin4,LOW);
     }
     else if (ch == 's') {          // 受信した文字が「s」の場合
+      Serial.println("s")
       digitalWrite(outputPin1,LOW);
       digitalWrite(outputPin2,HIGH);
       digitalWrite(outputPin3,LOW);
       digitalWrite(outputPin4,HIGH);
     }
     else if (ch == 'd') {          // 受信した文字が「d」の場合
+      Serial.println("d")
       digitalWrite(outputPin1,LOW);
       digitalWrite(outputPin2,LOW);
       digitalWrite(outputPin3,HIGH);

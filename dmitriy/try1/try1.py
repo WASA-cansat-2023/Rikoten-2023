@@ -12,15 +12,7 @@ joystick.init()
 
 #setup for esp32 
 
-# ser = serial.Serial()
-# ser.baudrate = 9600
-# devices = serial.tools.list_ports.comports()
-# port_found = False
-
-# for device in devices:
-#     if device.usb_description()=='ESP32LED':
-#         ser.port=device[0]
-#         port_found = True
+ser = serial.Serial("COM9", 9600)
 
 
 #Main program
