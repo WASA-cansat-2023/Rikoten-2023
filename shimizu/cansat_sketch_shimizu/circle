@@ -22,8 +22,15 @@ void setup()
 void loop()
 {
  if (SerialBT.available())  // Bluetoothシリアルに受信したかどうかを調べる
- { char ch = SerialBT.read();     // 受信した文字を得る
-    Serial.println(ch);           // 受信した文字をシリアルモニタに出力
+ { 
+   char ch = SerialBT.read();     // 受信した文字を得る
+   Serial.println(ch);           // 受信した文字をシリアルモニタに出力
+
+   if (ch == "w")
+   {
+    stop();
+    
+   }
  }
 {     
 
