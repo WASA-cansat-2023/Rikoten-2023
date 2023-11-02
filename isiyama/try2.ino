@@ -90,9 +90,9 @@ void loop() {
       i = 0;
       Serial.println("z");
       while (i < 700){
-        right(250);
-        delay(500);
         forward(250);
+        delay(500);
+        backward(250);
         delay(500);
       }
     }
