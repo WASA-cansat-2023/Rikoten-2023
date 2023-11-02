@@ -1,1 +1,31 @@
+#include <BluetoothSerial.h>
+
+BluetoothSerial SerialBT;
+
+const int outputPinRight1 = 32; //モータードライバー右
+const int outputPinRight2 = 33; //モータードライバー右
+
+const int outputPinLeft1 = 26; //モータードライバー左
+const int outputPinLeft2 = 25; //モータードライバー左
+
+void setup() 
+{
+  SerialBT.begin("ESP32LED");      // Bluetoothシリアルに「ESP32LED」という名前をつけて初期化
+  Serial.begin(9600);            // シリアルモニタの初期化
+
+  pinMode(outputPinRight1, OUTPUT);
+  pinMode(outputPinRight2, OUTPUT);
+  pinMode(outputPinLeft1, OUTPUT);
+  pinMode(outputPinLeft2, OUTPUT);
+}
+
+void loop()
+{
+ if (SerialBT.available())  // Bluetoothシリアルに受信したかどうかを調べる
+ { char ch = SerialBT.read();     // 受信した文字を得る
+    Serial.println(ch);           // 受信した文字をシリアルモニタに出力
+ }
+{     
+
+
 
