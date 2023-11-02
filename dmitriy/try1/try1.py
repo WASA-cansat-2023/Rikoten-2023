@@ -12,7 +12,7 @@ joystick.init()
 
 #setup for esp32 
 
-ser = serial.Serial("COM9", 9600)
+ser = serial.Serial("COM10", 9600)
 
 
 #Main program
