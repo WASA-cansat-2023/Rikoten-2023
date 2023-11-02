@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	// オプション・パラメータをセット
+	var position_options = {
+		// 高精度を要求する
+		enableHighAccuracy: true,
+		// 最大待ち時間（ミリ秒）
+		timeout: 60000,
+		// キャッシュ有効期間（ミリ秒）
+		maximumAge: 0
+	};
+	// 現在位置情報を取得
+	navigator.geolocation.watchPosition(monitor, null, position_options);
+}, false);
+
+// 位置情報取得完了時の処理
+function monitor(event) {
+	// let paragraph = document.querySelector('#paragraph')
+	// let paragraph_copy = paragraph.cloneNode()
+	// paragraph.append(paragraph_copy)
+	// paragraph_copy.textContent = 'paragraph1'
+
+
+	// let body = document.getElementsByTagName('body')[0];
+	// let gps_location = document.querySelectorAll('.gps_data')[0];
+	// let new_gps_location = gps_location.cloneNode()
+
+	// 緯度
+	var latitude = event.coords.latitude;
+	// document.querySelectorAll('.latitude')[0].textContent = latitude;
+	// 経度
+	var longitude = event.coords.longitude;
+	// document.querySelectorAll('.longitude')[0].textContent = longitude;
+
+	// タイムスタンプ
+	var date = event.timestamp;
+	if( typeof(date) == "number" ) {
+		date = new Date(date);
+	}
+	// document.querySelectorAll('.timestamp')[0].textContent = date.toString();
+
+
+	let title = document.querySelector('#title')
+	let time_element = document.createElement('div')
+	let gps_element = document.createElement('div')
+	time_element.textContent = date.toString();
+	gps_element.textContent = '経度：' + latitude + '　緯度：' + longitude;
+	gps_data2.insertBefore(time_element, title)
+	gps_data2.insertBefore(gps_element, title);
+}
+</script>
+</head>
+<body>
+	<div id = "gps_data2">
+		<h1 id = "title">はじまり</h1>
+	</div>
+<!-- 
+    <dl class = "gps_data">
+        <dt>緯度</dt>
+        <dd class="latitude">-</dd>
+    
+        <dt>経度</dt>
+        <dd class="longitude">-</dd>
+    
+        <dt>緯度・経度の精度</dt>
+        <dd class="accuracy">-</dd>
+    
+        <dt>GPS 高度</dt>
+        <dd class="altitude">-</dd>
+    
+        <dt>GPS 高度の精度</dt>
+        <dd class="altitudeAccuracy">-</dd>
+    
+        <dt>移動方向</dt>
+        <dd class="heading">-</dd>
+    
+        <dt>移動速度</dt>
+        <dd class="speed">-</dd>
+    
+        <dt>タイムスタンプ</dt>
+        <dd class="timestamp">-</dd>
+
+    </dl> -->
+
+</body>
+</html>

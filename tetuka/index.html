@@ -20,7 +20,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // 位置情報取得完了時の処理
 function monitor(event) {
-	document.querySelectorAll('.gps_data').cloneNode();
+	let gps_location = document.querySelectorAll('.gps_data')[0];
+	let new_gps_location = gps_location.cloneNode()
+	gps_location.append(new_gps_location)
 	// 緯度
 	var latitude = event.coords.latitude;
 	document.querySelectorAll('.latitude')[0].textContent = latitude;
