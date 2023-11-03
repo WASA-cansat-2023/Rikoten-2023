@@ -26,13 +26,61 @@ void loop()
    char ch = SerialBT.read();     // 受信した文字を得る
    Serial.println(ch);           // 受信した文字をシリアルモニタに出力
 
-   if (ch == "w")
+   if (ch == "w")  //前進
+   {
+    stop(); 
+    digitalWrite(outputPinRight1,HIGH);
+    digitalWrite(outputPinRight2,LOW);
+    digitalWrite(outputPinLeft1,HIGH);
+    digitalWrite(outputPinLeFT2,LOW);
+   }
+
+   else if (ch == "a")  //後退
    {
     stop();
-    
+    digitalWrite(outputPinRight1,LOW);
+    digitalWrite(outputPinRight2,HIGH);
+    digitalWrite(outputPinLeft1,LOW);
+    digitalWrite(outputPinLeft,HIGH);
+   }
+　
+ 　else if (ch == "s")  //右折
+   {
+    stop();
+    digitalWrite(outputPinRight1,HIGH);
+    digitalWrite(outputPinRight2,LOW);  //右前進
+    digitalWrite(outputPinLeft1,HIGH);
+    digitalWrite(outputPinLeft,HIGH);  //左stop
+   }
+
+   else if (ch == "s")  //左折
+   {
+    stop();
+    digitalWrite(outputPinRight1,HIGH);
+    digitalWrite(outputPinRight2,HIGH);  //右stop
+    digitalWrite(outputPinLeft1,HIGH);
+    digitalWrite(outputPinLeft,LOW);  //左前進
+   }
+
+   else if (ch == "x")  //右まわり回転
+   {
+    stop();
+    digitalWrite(outputPinRight1,HIGH);
+    digitalWrite(outputPinRight2,LOW);  //前進
+    digitalWrite(outputPinLeft1,LOW);
+    digitalWrite(outputPinLeft,HIGH);  //左後退
+   }
+
+   else if (ch == "y")  //左回り回転
+   {
+    stop();
+     digitalWrite(outputPinRight1,LOW);
+     digitalWrite(outputPinRight2,HIGH);　//右後退
+     digitalWrite(outputPinLeft1,HIGH);
+     digitalWrite(outputPinLeFT2,LOW);  //左前進
    }
  }
-{     
+}
 
 
 
