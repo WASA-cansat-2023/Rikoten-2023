@@ -15,6 +15,11 @@ ser = serial.Serial("COM10", 9600)
 done = False
 while not done:
     for event in pygame.event.get():
+        
+        last_input_time = time.time()  # Initialize time of last input
+        current_time = last_input_time
+        time_difference = 0
+        
         if event.type == pygame.QUIT:
             ser.close()
             done = True
@@ -32,38 +37,56 @@ while not done:
         #Left Stick
         elif -0.4>joystick.get_axis(1):
             ser.write(b'4')
+            while True:
+                ser.write(b'4')
+                time.sleep(1)
+                if pygame.event.get():
+                    break
         elif 0.4<joystick.get_axis(1):
-            ser.write(b'5')
+            while True:
+                ser.write(b'5')
+                time.sleep(1)
+                if pygame.event.get():
+                    break
         elif 0.4<joystick.get_axis(0):
-            ser.write(b'6')
+            while True:
+                ser.write(b'6')
+                time.sleep(1)
+                if pygame.event.get():
+                    break
         elif -0.4>joystick.get_axis(0):
-            ser.write(b'7')
+            while True:
+                ser.write(b'7')
+                time.sleep(1)
+                if pygame.event.get():
+                    break
 
         #Cross Button ( front = north )  
         elif 0.9<joystick.get_hat(0)[1]:
             while True:
                 ser.write(b'4')
-                time.sleep(0.1)
+                time.sleep(1)
                 if pygame.event.get():
                     break
 
         elif -0.9>joystick.get_hat(0)[1]:
             while True:
                 ser.write(b'5')
-                time.sleep(0.1)
+                time.sleep(1)
                 if pygame.event.get():
                     break
 
         elif 0.9<joystick.get_hat(0)[0]:
             while True:
                 ser.write(b'6')
-                time.sleep(0.1)
+                time.sleep(1)
                 if pygame.event.get():
                     break
 
         elif -0.9>joystick.get_hat(0)[0]:
             while True:
                 ser.write(b'7')
-                time.sleep(0.1)
+                time.sleep(1)
                 if pygame.event.get():
                     break
+        

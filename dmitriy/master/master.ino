@@ -40,15 +40,19 @@ void loop() {
 
     if (ch == '4') {               // 受信した文字が「0」の場合
       forward(250);
+      delay(1000);
     }
     else if (ch == '5') {          // 受信した文字が「1」の場合
       backward(250);
+      delay(1000);
     }
     else if (ch == '6') {          // 受信した文字が「1」の場合
       left(250);
+      delay(1000);
     }
     else if (ch == '7') {          // 受信した文字が「1」の場合
       right(250);
+      delay(1000);
     }
     else{
       ledcWrite(0,0);
@@ -73,22 +77,22 @@ void forward(uint32_t pwm) {
 }
 
 void backward(uint32_t pwm) {
-  ledcWrite(0,0);
-  ledcWrite(1,pwm);
-  ledcWrite(2,0);
-  ledcWrite(3,pwm);
+  ledcWrite(0, 0);
+  ledcWrite(1, pwm);
+  ledcWrite(2, 0);
+  ledcWrite(3, pwm);
 }
 
 void left(uint32_t pwm) {
-  ledcWrite(0,pwm);
-  ledcWrite(1,0);
-  ledcWrite(2,0);
-  ledcWrite(3,0);
+  ledcWrite(0, pwm);
+  ledcWrite(1, 0);
+  ledcWrite(2, 0);
+  ledcWrite(3, 0);
 }
 
 void right(uint32_t pwm) {
-  ledcWrite(0,0);
-  ledcWrite(1,0);
-  ledcWrite(2,pwm);
-  ledcWrite(3,0);
+  ledcWrite(0, 0);
+  ledcWrite(1, 0);
+  ledcWrite(2, pwm);
+  ledcWrite(3, 0);
 }
