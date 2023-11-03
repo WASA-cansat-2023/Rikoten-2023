@@ -7,6 +7,8 @@ const int outputPin2 = 33;
 const int outputPin3 = 26;
 const int outputPin4 = 25;
 
+char ch;
+
 void setup() {
   SerialBT.begin("ESP32LED");      // Bluetoothシリアルに「ESP32LED」という名前をつけて初期化
   Serial.begin(9600);            // シリアルモニタの初期化
@@ -19,7 +21,7 @@ void setup() {
 
 void loop() {
   if (SerialBT.available()) {      // Bluetoothシリアルに受信したかどうかを調べる
-    char ch = SerialBT.read();     // 受信した文字を得る
+    ch = SerialBT.read();     // 受信した文字を得る
     //Serial.println(ch);            // 受信した文字をシリアルモニタに出力
 
     if (ch == 'w') {               // 受信した文字が「w」の場合
