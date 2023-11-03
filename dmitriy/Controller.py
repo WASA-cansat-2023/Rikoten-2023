@@ -1,4 +1,3 @@
-import serial 
 import time
 import pygame
 
@@ -64,22 +63,34 @@ while not done:
             print('Right Stick Y axis +')
 
         #Cross Button ( front = north )  
-        if (0,1)==joystick.get_hat(0):
-            print('North')
-        if (1,1)==joystick.get_hat(0):
-            print('Northeast')
-        if (1,0)==joystick.get_hat(0):
-            print('East')
-        if (1,-1)==joystick.get_hat(0):
-            print('Southeast')
-        if (0,-1)==joystick.get_hat(0):
-            print('South')
-        if (-1,-1)==joystick.get_hat(0):
-            print('Southwest')
-        if (-1,0)==joystick.get_hat(0):
-            print('West')
-        if (-1,1)==joystick.get_hat(0):
-            print('Northwest')
+        if 0.9<joystick.get_hat(0)[1]:
+            while True:
+                print('North')
+                time.sleep(0.1)
+                if pygame.event.get():
+                    break
+
+        if 0.9<joystick.get_hat(0)[0]:
+            while True:
+                print('East')
+                time.sleep(0.1)
+                if pygame.event.get():
+                    break
+
+        if -0.9>joystick.get_hat(0)[1]:
+            while True:
+                print('South')
+                time.sleep(0.1)
+                if pygame.event.get():
+                    break
+
+        if -0.9>joystick.get_hat(0)[0]:
+            while True:
+                print('West')
+                time.sleep(0.1)
+                if pygame.event.get():
+                    break
+
 
 
 #ser.write(b'0')

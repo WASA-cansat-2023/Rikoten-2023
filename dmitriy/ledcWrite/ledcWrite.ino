@@ -7,8 +7,6 @@ const int outputPin2 = 33;
 const int outputPin3 = 26;
 const int outputPin4 = 25;
 
-const int max_val = 255;
-
 void forward(uint32_t pwm);
 void backward(uint32_t pwm);
 void left(uint32_t pwm);
