@@ -9,7 +9,7 @@ joystick = pygame.joystick.Joystick(0)
 joystick.init()
 
 #change COM port 
-ser = serial.Serial("COM9", 9600)
+ser = serial.Serial("COM10", 9600)
 
 #Main program
 done = False

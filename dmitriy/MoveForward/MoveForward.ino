@@ -19,7 +19,7 @@ void setup() {
 
 void loop() {
 
-  Serial.println("w");
+  Serial.println("4");
   digitalWrite(outputPin1,HIGH);
   digitalWrite(outputPin2,LOW);
   digitalWrite(outputPin3,HIGH);
