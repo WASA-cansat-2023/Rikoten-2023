@@ -15,7 +15,7 @@ desired_hwid_part = "0&9C9C1FCBE1C6"
 
 for p in ports:
     if desired_hwid_part in p.hwid:
-        print("目標のポートを見つけました:", p.name) #p.hwid 
+        print("ESP32_1のポートを見つけました:", p.name) #p.hwid 
         ser = serial.Serial(port=p.device, baudrate=9600)
         break
         
@@ -33,7 +33,7 @@ while not done:
             done = True
 
         #Left Stick
-        n =joystick.get_axis(1)
+        n = joystick.get_axis(1)
         if -0.4>n :
             while True:
                 n =joystick.get_axis(1)
@@ -43,8 +43,8 @@ while not done:
                     break
                 if n != joystick.get_axis(1):
                     break
-        n =joystick.get_axis(1)
-        if 0.4 < n :
+        n = joystick.get_axis(1)
+        if 0.4<n :
             while True:
                 n =joystick.get_axis(1)
                 ser.write(b'1')
@@ -53,8 +53,8 @@ while not done:
                     break
                 if n != joystick.get_axis(1):
                     break
-        n =joystick.get_axis(0)
-        if 0.4<n:
+        n = joystick.get_axis(0)
+        if 0.4<n :
             while True:
                 ser.write(b'2')
                 print('2')
@@ -62,8 +62,8 @@ while not done:
                     break
                 if n != joystick.get_axis(0):
                     break
-        n =joystick.get_axis(0)
-        if -0.4>n:
+        n = joystick.get_axis(0)
+        if -0.4>n :
             while True:
                 n =joystick.get_axis(0)
                 ser.write(b'3')
