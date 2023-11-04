@@ -125,30 +125,52 @@ void nothing(void){
 }
 
 void zigzag(void){
-  for(int i = 0; i<2; i++){
-    if(i%2==0){
+  for(int i = 1; i<4; i++){
+    if(i%2!=0){
         right(pwm);
-        delay(500);
+        delay(250);
+        stop();
         forward(pwm);
         delay(500);
+        stop();
         left(pwm);
-        delay(1000);
+        delay(500);
+        stop();
         forward(pwm);
         delay(1000);
+        stop();
         right(pwm);
         delay(500);
+        stop();
+        forward(pwm);
+        delay(500);
+        stop();
+        left(pwm);
+        delay(250);
+        stop();
     }
     else{
         left(pwm);
-        delay(500);
+        delay(250);
+        stop();
         forward(pwm);
         delay(500);
+        stop();
         right(pwm);
-        delay(1000);
+        delay(500);
+        stop();
         forward(pwm);
         delay(1000);
+        stop();
         left(pwm);
         delay(500);
+        stop();
+        forward(pwm);
+        delay(500);
+        stop();
+        right(pwm);
+        delay(250);
+        stop();
     }
   }
 }
@@ -159,12 +181,16 @@ void nunun(void){
   ledcWrite(1,0);
   ledcWrite(2,pwm);
   ledcWrite(3,0);
-  delay(1000);
+  delay(2000);
+  stop();
+  delay(100);
   ledcWrite(0,pwm);
   ledcWrite(1,0);
   ledcWrite(2,0);
   ledcWrite(3,0);
-  delay(1000);    
+  delay(2000);
+  stop();
+  delay(100);
   }
 }
 
@@ -174,17 +200,25 @@ void eight(void){
   ledcWrite(1,pwm/2);
   ledcWrite(2,pwm);
   ledcWrite(3,0);
-  delay(4000);
+  delay(2100);
+  stop();
   ledcWrite(0,pwm);
   ledcWrite(1,0);
   ledcWrite(2,0);
   ledcWrite(3,pwm/2);
-  delay(4000);    
+  delay(4200);
+  stop();
+  ledcWrite(0,0);
+  ledcWrite(1,pwm/2);
+  ledcWrite(2,pwm);
+  ledcWrite(3,0);
+  delay(2100);
+  stop();
   }
 }
   
 void boost(void){
-  if(boostMode = false){
+  if(boostMode == false){
     pwm = 250;
     boostMode = true;
   }
