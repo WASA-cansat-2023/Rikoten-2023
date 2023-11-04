@@ -14,7 +14,7 @@ void right(uint32_t pwm);
 void stop(void);
 void nothing(void);
 
-uint32_t pwm = 122;
+uint32_t pwm = 200;
 bool boost = false;
 
 void setup() {
@@ -94,15 +94,15 @@ void right(uint32_t pwm) {
 }
 
 void stop(void){
-  digitalWrite(outputPin0, 1);
-  digitalWrite(outputPin1, 1);
-  digitalWrite(outputPin2, 1);
-  digitalWrite(outputPin3, 1);
+  ledcWrite(0,250);
+  ledcWrite(1,250);
+  ledcWrite(2,250);
+  ledcWrite(3,250);
 }
 
 void nothing(void){
-  digitalWrite(outputPin0, 0);
-  digitalWrite(outputPin1, 0);
-  digitalWrite(outputPin2, 0);
-  digitalWrite(outputPin3, 0);
+  ledcWrite(0,0);
+  ledcWrite(1,0);
+  ledcWrite(2,0);
+  ledcWrite(3,0);
 }

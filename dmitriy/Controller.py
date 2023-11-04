@@ -1,5 +1,6 @@
 import time
 import pygame
+import itertools
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -43,7 +44,11 @@ while not done:
             print('Right Stick button pressed') 
 
         #Left Stick
-        if 0.4<joystick.get_axis(0):
+        if 0.4<joystick.get_axis(0):       
+            for i in itertools.count():
+                print('Left Stick X axis + ')
+                if pygame.event.get():
+                    break
             print('Left Stick X axis + ')
         if -0.4>joystick.get_axis(0):
             print('Left Stick X axis - ')
