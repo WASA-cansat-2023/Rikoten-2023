@@ -89,12 +89,12 @@ void left(uint32_t pwm) {
   ledcWrite(0,pwm);
   ledcWrite(1,0);
   ledcWrite(2,0);
-  ledcWrite(3,0);
+  ledcWrite(3,pwm);
 }
 
 void right(uint32_t pwm) {
   ledcWrite(0,0);
-  ledcWrite(1,0);
+  ledcWrite(1,pwm);
   ledcWrite(2,pwm);
   ledcWrite(3,0);
 }
