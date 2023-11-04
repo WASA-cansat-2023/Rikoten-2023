@@ -108,9 +108,13 @@ while not done:
         #button
         elif 1==joystick.get_button(0):#Green A button
             ser.write(b'4')
+            print('4')
         elif 1==joystick.get_button(1):#Red B button
             ser.write(b'5')
+            print('5')
         elif 1==joystick.get_button(2):#Blue X button
             ser.write(b'6')
+            print('6')
         elif 1==joystick.get_button(3):#Yellow Y button
             ser.write(b'7')
+            print('7')
