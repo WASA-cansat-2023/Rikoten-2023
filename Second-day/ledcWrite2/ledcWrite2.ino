@@ -23,7 +23,7 @@ uint32_t pwm = 200;
 bool boostMode = false;
 
 void setup() {
-  SerialBT.begin("ESP32_1");      // Bluetoothシリアルに「ESP32_1」という名前をつけて初期化 // 2つ目の機体は「ESP32_2」に変更
+  SerialBT.begin("ESP32_2");      // Bluetoothシリアルに「ESP32_1」という名前をつけて初期化 // 2つ目の機体は「ESP32_2」に変更
   Serial.begin(115200);            
 
   pinMode(outputPin0, OUTPUT);
