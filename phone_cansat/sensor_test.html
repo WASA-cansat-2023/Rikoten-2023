@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <button id="download">JSONファイルをダウンロード</button>
+        <div id = "gps_data">
+            <h1 id="device">デバイス</h1>
+        </div>
+    </body>
+    <script>
+        
+    let csv = "";
+    let aX = 0, aY = 0, aZ = 0;
+    let alpha = 0, beta = 0, gamma = 0;    
+    let gps_data = document.querySelector('#gps_data')
+    document.addEventListener("DOMContentLoaded", function() {
+        // オプション・パラメータをセット
+        var position_options = {
+            // 高精度を要求する
+            enableHighAccuracy: true,
+            // 最大待ち時間（ミリ秒）
+            timeout: 60000,
+            // キャッシュ有効期間（ミリ秒）
+            maximumAge: 0
+        };
+        // 現在位置情報を取得
+        navigator.geolocation.watchPosition(monitor, null, position_options);
+
+        setInterval(() => {
+            window.addEventListener("devicemotion", (dat) => {
+                aX = dat.accelerationIncludingGravity.x;    // x軸の重力加速度（Android と iOSでは正負が逆）
+                aY = dat.accelerationIncludingGravity.y;    // y軸の重力加速度（Android と iOSでは正負が逆）
+                aZ = dat.accelerationIncludingGravity.z;    // z軸の重力加速度（Android と iOSでは正負が逆）
+            });
+            let acce_element = document.createElement('div');
+            acce_element.textContent = '加速度：' + aX + ", " + aY + ", " + aZ;
+            gps_data.insertBefore(acce_element, device.nextSibling);
+            csv += aX + "," + aY + "," + aZ + "\n"; 
+        }, 50)
+        
+
+
+        //地磁気（方角）
+        setInterval(() => {
+            window.addEventListener("deviceorientationabsolute", (dat) => {
+                alpha = dat.alpha;
+                beta = dat.beta;
+                gamma = dat.gamma;
+            })
+            let orientation_element = document.createElement('div');
+            orientation_element.textContent = '方角：' + alpha + ", " + beta + ", " + gamma;
+            gps_data.insertBefore(orientation_element, device.nextSibling);
+            csv += alpha + "," + beta + "," + gamma + "\n"; 
+            }, false);
+        }, 50)
+        
+
+    // 位置情報取得完了時の処理
+    function monitor(event) {
+        console.log('in monitor')
+        // 緯度
+        var latitude = event.coords.latitude;
+        // document.querySelectorAll('.latitude')[0].textContent = latitude;
+        // 経度
+        var longitude = event.coords.longitude;
+        // document.querySelectorAll('.longitude')[0].textContent = longitude;
+        var accuracy = event.coords.accuracy;
+
+
+        // タイムスタンプ
+        var date = event.timestamp;
+        if( typeof(date) == "number" ) {
+            date = new Date(date);
+        }
+
+        let device = document.querySelector('#device')
+        let time_element = document.createElement('div')
+        let gps_element = document.createElement('div')
+        time_element.textContent = date.toString();
+        gps_element.textContent = '経度：' + latitude + '　緯度：' + longitude + '　精度：' + accuracy;
+        gps_data.insertBefore(time_element, device.nextSibling);
+        gps_data.insertBefore(gps_element, device.nextSibling);
+        csv += date.toString() + "," + latitude + "," + longitude + ",";
+
+        //csvファイル作成
+        
+
+    }
+    setInterval(() => {
+// let gps_data = document.querySelector('#gps_data');
+        // let all_data = gps_data.childNodes;
+        // let lines = []
+        var bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
+        // for (let data_number = 0; data_number < all_data.length; data_number++)
+        // {
+        //     lines.push(all_data[data_number].textContent);
+        // }
+        // const text = lines.join("\n");
+        const blob = new Blob([bom, csv], {type: "text/csv"});
+        const a = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        a.href = url;
+        a.download = "gps.csv";
+        a.click();
+        URL.revokeObjectURL(url);
+    }, 3000)
+    </script>
+
+</html>
